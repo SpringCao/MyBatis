@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace绑定一个dao接口-->
+<mapper namespace="com.ccj.dao.UserMapper">
+    <select id="getUserList" resultType="com.ccj.entity.User">
+        select * from user
+    </select>
+
+    <select id="getUserById" resultType="com.ccj.entity.User" parameterType="int">
+        select * from user where id = #{id}
+    </select>
+
+    <insert id="createUser" parameterType="com.ccj.entity.User">
+        insert into user(id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+
+    <insert id="createUser2" parameterType="map">
+        insert into user(id,name,pwd) values (#{userid},#{username},#{userpwd})
+    </insert>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+
+    <update id="updateUserById" parameterType="com.ccj.entity.User">
+        update user set name=#{name},pwd=#{pwd} where id=#{id}
+    </update>
+</mapper>
